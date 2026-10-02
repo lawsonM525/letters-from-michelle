@@ -1,13 +1,15 @@
 # Letters from Michelle
 
-A playful, mobile-first penpal signup frontend with a retro desktop window, original envelope illustration, and a separate handmade zine waitlist preview.
+A simple mobile-first penpal frontend with a retro desktop window, cream-and-pink palette, the original envelope illustration, and a separate handmade zine waitlist preview.
+
+The flow stays short: one invitation and button, a brief address form, then an optional zine invite. Completing the demo clears the entered values and reveals a small “SEALED / DEMO COMPLETE” stamp automatically. There are no extra game steps, looping animations, or bouncing effects.
 
 ## Current status: frontend-only demo
 
 - US mailing addresses only for now. This notice appears on the homepage before the main button and above the address form, so it remains visible when a Tally link replaces the demo.
 - The demo fixes the country to United States, requires a state, and accepts 5-digit or ZIP+4 postal codes.
 - No database, API, admin dashboard, authentication, analytics, or real signup is implemented.
-- Every screen clearly labels this as a preview. Use made-up details when trying the form.
+- The persistent demo notice explains that nothing is sent or saved. Use made-up details when trying the form.
 - Form values exist only in React memory while the page is open. Completing the demo clears them. Reloading resets the demo.
 - No form values are sent over the network, saved in localStorage, logged, or bundled into source.
 - Neither the letter nor the zine buttons submit a real signup.
