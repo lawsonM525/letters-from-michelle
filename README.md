@@ -1,6 +1,6 @@
 # Letters from Michelle
 
-A simple mobile-first penpal frontend with a retro desktop window, cream-and-pink palette, the original envelope illustration, and a separate handmade zine waitlist preview.
+A simple mobile-first penpal frontend inside Michelle’s Computer, with a retro desktop window, cream-and-pink palette, the original envelope illustration, Georgia serif headings, and a separate handmade zine waitlist preview.
 
 The flow stays short: one invitation and button, a brief address form, then an optional zine invite. Completing the demo clears the entered values and reveals a small “SEALED / DEMO COMPLETE” stamp automatically. There are no extra game steps, looping animations, or bouncing effects.
 

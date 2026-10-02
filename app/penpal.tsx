@@ -27,14 +27,14 @@ export default function Penpal() {
   },[start]);
   const field=(name:keyof Address,label:string,auto:string,required=true,placeholder="")=><label className="field" key={name}><span>{label}{!required&&<span className="optional"> (optional)</span>}</span><Input name={name} autoComplete={auto} required={required} value={address[name]} maxLength={name==="firstName"?60:name==="postalCode"?10:120} pattern={name==="postalCode"?"[0-9]{5}(-[0-9]{4})?":undefined} title={name==="postalCode"?"Enter a 5-digit US ZIP code, optionally followed by a hyphen and 4 digits.":undefined} onChange={e=>setAddress(a=>({...a,[name]:e.target.value}))} placeholder={placeholder} className="address-input" /></label>;
   return <div className="desktop">
-    <header className="desktop-bar"><Mail size={17}/><span>michelle’s post office</span></header>
+    <header className="desktop-bar"><Mail size={17}/><span>Michelle’s Computer</span></header>
     <main className="desk-content">
       {!LETTER_FORM_URL&&<p className="preview-banner"><strong>DEMO</strong> Nothing is sent or saved. Use made-up details.</p>}
       <section className="window" aria-label="Penpal preview">
         <div className="titlebar"><span className="titlebar-name">penpals.exe</span><div className="titlebar-lines" aria-hidden="true"/><span className="window-controls" aria-hidden="true"><Minus/><Square/><X/></span></div>
         {stage==="hello"&&<div className="hello-panel">
           <img className="mail-art" src="/penpal-mail.png" alt="A cheerful envelope with a letter, hearts, and a smiling postage stamp" width="230" height="230"/>
-          <h1>wanna be<br/>penpals?</h1>
+          <h1>wanna be<br/><em>penpals?</em></h1>
           <p className="us-only-note">US mailing addresses only for now.</p>
           <Button className="retro-button primary-cta" onClick={start}>let me send you a handwritten letter</Button>
         </div>}
