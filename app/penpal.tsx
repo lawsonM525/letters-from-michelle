@@ -27,7 +27,7 @@ function TallyForm({ form, onSubmitted }: { form: typeof LETTER_FORM; onSubmitte
     return () => window.removeEventListener("message", receive);
   }, [form.id, onSubmitted]);
   return <>
-    <iframe ref={frame} src={form.embedUrl} data-tally-src={form.embedUrl} width="100%" height={form.height} frameBorder={0} title={form.title} className="tally-frame" onLoad={loadEmbeds} />
+    <iframe ref={frame} data-tally-src={form.embedUrl} width="100%" height={form.height} frameBorder={0} title={form.title} className="tally-frame" />
     <p className="embed-fallback">Form not loading? <a href={form.publicUrl} target="_blank" rel="noopener noreferrer">Open it in a new tab</a>.</p>
   </>;
 }
