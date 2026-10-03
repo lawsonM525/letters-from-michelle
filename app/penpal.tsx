@@ -69,6 +69,7 @@ export default function Penpal() {
         </div>}
         {stage === "magazine" && <div className="form-panel embed-panel">
           <h1 ref={heading} tabIndex={-1} className="sr-only">Magazine waitlist form</h1>
+          <p>An illustrated field guide to figuring out life in the age of AI, through my experiments, stories and things I’m making.</p>
           <TallyForm form={MAGAZINE_FORM} onSubmitted={() => setStage("waitlisted")} />
           <button className="text-button back" onClick={() => setStage(returnStage)}>back</button>
         </div>}
