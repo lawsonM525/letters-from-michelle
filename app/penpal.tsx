@@ -57,7 +57,7 @@ export default function Penpal() {
           <button className="text-button" onClick={() => openMagazine("hello")}>just here for the magazine? join the waitlist</button>
         </div>}
         {stage === "address" && <div className="form-panel embed-panel">
-          <h1 ref={heading} tabIndex={-1} className="form-heading">where should<br />I send it?</h1>
+          <h1 ref={heading} tabIndex={-1} className="sr-only">Pen-pal mailing address form</h1>
           <TallyForm form={LETTER_FORM} onSubmitted={() => setStage("sealed")} />
           <button className="text-button back" onClick={() => setStage("hello")}>back</button>
           <button className="text-button" onClick={() => openMagazine("address")}>or join the magazine waitlist</button>
