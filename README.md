@@ -1,46 +1,36 @@
 # Letters from Michelle
 
-A simple mobile-first penpal frontend inside Michelle’s Computer, with a retro desktop window, cream-and-pink palette, the original envelope illustration, Georgia serif headings, and a separate handmade zine waitlist preview.
+Michelle’s little post office: a responsive retro desktop window, cream-and-pink palette, envelope illustration, Georgia headings, and live Tally forms.
 
-The flow stays short: one invitation and button, a brief address form, then an optional zine invite. Completing the demo clears the entered values and reveals a small “SEALED / DEMO COMPLETE” stamp automatically. There are no extra game steps, looping animations, or bouncing effects.
+## Live signup flows
 
-## Current status: frontend-only demo
+The invitation opens the international penpal form inside the site. Tally collects first name, street address, optional apartment/unit, city, optional state/province/region, optional postal code, and required country. The form explains that a letter or ongoing replies cannot be guaranteed.
 
-- US mailing addresses only for now. This notice appears on the homepage before the main button and above the address form, so it remains visible when a Tally link replaces the demo.
-- The demo fixes the country to United States, requires a state, and accepts 5-digit or ZIP+4 postal codes.
-- No database, API, admin dashboard, authentication, analytics, or real signup is implemented.
-- The persistent demo notice explains that nothing is sent or saved. Use made-up details when trying the form.
-- Form values exist only in React memory while the page is open. Completing the demo clears them. Reloading resets the demo.
-- No form values are sent over the network, saved in localStorage, logged, or bundled into source.
-- Neither the letter nor the zine buttons submit a real signup.
+The magazine waitlist is a separate opt-in for first name and email. It is available from the invitation, the penpal form, and after a confirmed letter submission. No free-copy checkbox is added.
 
-## Run and edit
+- Penpal: https://tally.so/r/68alRY
+- Magazine waitlist: https://tally.so/r/zxP9JM
+- Production: https://letters-from-michelle-taupe.vercel.app/
+
+Both forms use responsive standard embeds with Tally’s dynamic-height widget. A direct link is available if an embed cannot load. Back and close controls let visitors return to the invitation. Returning to a form creates a fresh embed; unfinished values may be lost.
+
+A success state appears only after a Tally.FormSubmitted message from the matching Tally iframe and form ID. The site does not retain, log, or store answers. Submission data lives in Tally; the frontend has no recipient database, admin dashboard, or mailing workflow. The penpal signup does not subscribe anyone to the magazine.
+
+## Run and deploy
 
 Requires Node.js 22.13 or newer.
 
-1. `npm ci`
-2. `npm run dev`
-3. Open the local URL printed in the terminal.
+1. npm ci
+2. npx next dev
+3. npx next build to check the Vercel production build
+
+Vercel uses the existing Next.js preset with the Build Command override next build, root directory ./, and default output/install settings. The inherited npm run build wrapper targets Vinext/Cloudflare and is not the Vercel build command.
 
 Useful files:
 
-- `app/penpal.tsx`: homepage, address form, and zine preview interaction
-- `app/globals.css`: colors, retro window styling, typography, responsive layout
-- `app/site-config.ts`: future Tally link setting
-- `app/layout.tsx`: document title and description
-- `public/penpal-mail.png`: original envelope illustration
-- `public/favicon.svg`: site icon
+- app/penpal.tsx: invitation, embedded forms, and confirmed success screens
+- app/site-config.ts: public form IDs, URLs, and initial embed heights
+- app/globals.css: retro styling and responsive layouts
+- public/penpal-mail.png: envelope illustration
 
-`npm run build` creates the production bundle. `npm start` previews the built Worker locally. The included Vinext / Cloudflare build scaffolding supports the current hosting workflow. The application itself does not use its optional backend capabilities.
-
-## Connect Tally later
-
-Create and publish the real Tally form first, then set `LETTER_FORM_URL` in `app/site-config.ts` to its exact `https://tally.so/r/...` URL. The main CTA will open that form instead of this local demo. Do not insert a fake ID. No Tally form is connected in this version.
-
-Set up the live Tally form's first-name/address fields and clear consent language. Keep US-only eligibility visible and restrict its address fields to United States, state, and ZIP code. Keep the zine waitlist a separate, explicit opt-in. Configure a thank-you screen and retention/access settings there. Adding the link does not itself build these features or automatically create a waitlist. Confirm the flow with dummy data before inviting real people.
-
-## Privacy and future work
-
-Keep recipient records out of Git, public pages, client JavaScript, screenshots, and logs. A later packed/shipped workflow will need a separate, properly authorized private tool. This repository intentionally contains no recipient information, credentials, live database connection, or deployment-specific identity.
-
-The public frontend source is separate from the private hosted review link. Publishing source code does not make the hosted Site public.
+Keep addresses, email records, credentials, and exports out of Git, public pages, screenshots, and logs. Test the visible forms without submitting responses unless submission testing is explicitly authorized.
