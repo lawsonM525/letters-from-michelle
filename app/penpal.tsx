@@ -52,7 +52,6 @@ export default function Penpal() {
         {stage === "hello" && <div className="hello-panel">
           <img className="mail-art" src="/penpal-mail.png" alt="A cheerful envelope with a letter, hearts, and a smiling postage stamp" width="230" height="230" />
           <h1>wanna be<br /><em>penpals?</em></h1>
-          <p className="us-only-note">A handwritten hello, wherever you call home.</p>
           <Button className="retro-button primary-cta" onClick={() => setStage("address")}>let me send you a handwritten letter</Button>
           <button className="text-button" onClick={() => openMagazine("hello")}>just here for the magazine? join the waitlist</button>
         </div>}
