@@ -13,3 +13,15 @@
 @media(max-width:420px){.embed-panel{padding:24px 8px 16px}.embed-panel .form-heading{margin-left:10px}.embed-fallback{padding:0 10px}}
 
 @media(max-width:700px){.desktop{background-size:auto 100svh;background-position:left top;background-attachment:scroll}.desk-content{background:transparent}}
+
+/* Match the magazine's Tally typography without changing the pen-pal theme. */
+@font-face{font-family:Magazine Inter;src:url("/magazine-inter.woff2") format("woff2");font-style:normal;font-weight:100 900;font-display:swap}
+.magazine-panel{padding-top:18px}
+.magazine-banner{position:relative;overflow:hidden;aspect-ratio:1610/302;margin:0 8px}
+.magazine-banner img{position:absolute;display:block;width:127.205%;max-width:none;height:auto;left:-13.665%;top:-59.603%}
+.magazine-subheading{font:italic 16px/1.5 Magazine Inter,Arial,Helvetica,sans-serif;color:#37352f;text-align:center;margin:12px 8px 4px}
+/* This magazine embed starts with a 200px cover, a 50px page margin and an
+   empty text block. Clip that decorative space; keep the native form intact. */
+.magazine-form-viewport{display:flow-root;overflow:hidden}
+.magazine-form-viewport .tally-frame{margin-top:-290px}
+@media(max-width:420px){.magazine-panel{padding-top:14px}.magazine-subheading{font-size:15px;margin-top:10px}}

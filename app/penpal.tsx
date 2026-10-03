@@ -10,7 +10,7 @@ type TallyRuntime = { loadEmbeds: () => void };
 function loadEmbeds() {
   (window as Window & { Tally?: TallyRuntime }).Tally?.loadEmbeds();
 }
-function TallyForm({ form, onSubmitted }: { form: typeof LETTER_FORM; onSubmitted: () => void }) {
+function TallyForm({ form, onSubmitted, compactCover = false }: { form: typeof LETTER_FORM; onSubmitted: () => void; compactCover?: boolean }) {
   const frame = useRef<HTMLIFrameElement>(null);
   useEffect(() => {
     loadEmbeds();
@@ -27,7 +27,9 @@ function TallyForm({ form, onSubmitted }: { form: typeof LETTER_FORM; onSubmitte
     return () => window.removeEventListener("message", receive);
   }, [form.id, onSubmitted]);
   return <>
-    <iframe ref={frame} data-tally-src={form.embedUrl} width="100%" height={form.height} frameBorder={0} title={form.title} className="tally-frame" />
+    <div className={compactCover ? "magazine-form-viewport" : undefined}>
+      <iframe ref={frame} data-tally-src={form.embedUrl} width="100%" height={form.height} frameBorder={0} title={form.title} className="tally-frame" />
+    </div>
     <p className="embed-fallback">Form not loading? <a href={form.publicUrl} target="_blank" rel="noopener noreferrer">Open it in a new tab</a>.</p>
   </>;
 }
@@ -67,10 +69,11 @@ export default function Penpal() {
           {zineInvite("sealed")}
           <button className="text-button" onClick={() => setStage("hello")}>back to the little post office</button>
         </div>}
-        {stage === "magazine" && <div className="form-panel embed-panel">
+        {stage === "magazine" && <div className="form-panel embed-panel magazine-panel">
           <h1 ref={heading} tabIndex={-1} className="sr-only">Magazine waitlist form</h1>
-          <p>An illustrated field guide to figuring out life in the age of AI, through my experiments, stories and things I’m making.</p>
-          <TallyForm form={MAGAZINE_FORM} onSubmitted={() => setStage("waitlisted")} />
+          <div className="magazine-banner"><img src="/magazine-banner.png" alt="Michelle’s Computer — the magazine" width="2048" height="682" /></div>
+          <p className="magazine-subheading">An illustrated field guide to figuring out life in the age of AI, through my experiments, stories and things I’m making.</p>
+          <TallyForm form={MAGAZINE_FORM} compactCover onSubmitted={() => setStage("waitlisted")} />
           <button className="text-button back" onClick={() => setStage(returnStage)}>back</button>
         </div>}
         {stage === "waitlisted" && <div className="success-panel">
