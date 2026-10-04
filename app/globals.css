@@ -1,3 +1,4 @@
+@import url("/fonts/soup-du-jour/MyWebfontsKit.css");
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "../vendor/shadcn-tailwind-4.13.0.css";
@@ -25,3 +26,5 @@
 .magazine-form-viewport{display:flow-root;overflow:hidden}
 .magazine-form-viewport .tally-frame{margin-top:-290px}
 @media(max-width:420px){.magazine-panel{padding-top:14px}.magazine-subheading{font-size:15px;margin-top:10px}}
+
+.hello-panel h1{font-family:"SoupDuJourSolid",Georgia,serif;line-height:1.08;letter-spacing:0;font-synthesis:none}.hello-panel h1 em{font-style:normal}
